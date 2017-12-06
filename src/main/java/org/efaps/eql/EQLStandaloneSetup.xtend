@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2015 The eFaps Team
+ * Copyright 2003 - 2017 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,37 +15,21 @@
  *
  */
 
-package org.efaps.eql;
-
-import com.google.inject.Injector;
+package org.efaps.eql
 
 /**
- * Initialization support for running Xtext languages without equinox extension
- * registry.
- *
- * @author The eFaps Team
+ * Initialization support for running Xtext languages without Equinox extension registry.
  */
-public class EQLStandaloneSetup
-    extends EQLStandaloneSetupGenerated
-{
+class EQLStandaloneSetup extends EQLStandaloneSetupGenerated {
 
-    /**
-     * Do setup.
-     */
-    public static void doSetup()
-    {
-        doSetup(null);
+    def static void doSetup() {
+        new EQLStandaloneSetup().createInjectorAndDoEMFRegistration()
     }
 
-    /**
-     * Do setup.
-     *
-     * @param _instance the instance
-     */
-    public static void doSetup(final Object _instance)
+    def static void doSetup(Object _instance)
     {
-        final Injector injector = new EQLStandaloneSetup().createInjectorAndDoEMFRegistration();
-        if (_instance != null) {
+        var injector = new EQLStandaloneSetup().createInjectorAndDoEMFRegistration();
+        if (_instance !== null) {
             injector.injectMembers(_instance);
         }
     }

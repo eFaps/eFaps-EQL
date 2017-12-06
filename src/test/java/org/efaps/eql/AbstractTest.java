@@ -84,12 +84,12 @@ public abstract class AbstractTest
             setDiagnostic(new BasicDiagnostic());
             final Map<Object, Object> context = new HashMap<>();
             context.put(AbstractInjectableValidator.CURRENT_LANGUAGE_NAME, "org.efaps.eql.EQL");
-            getInvoker().getValidator().validate(ret, getDiagnostic(), context);
+            //getInvoker().getValidator().validate(ret, getDiagnostic(), context);
             final TreeIterator<EObject> iterator = ret.eAllContents();
             while (iterator.hasNext()) {
                 final EObject nextObj = iterator.next();
                 if (nextObj != null) {
-                    getInvoker().getValidator().validate(nextObj, getDiagnostic(), context);
+              //      getInvoker().getValidator().validate(nextObj, getDiagnostic(), context);
                 }
             }
         }
