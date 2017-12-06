@@ -16,7 +16,7 @@
  */
 package org.efaps.eql.ui.contentassist;
 
-import org.eclipse.jface.text.ITextSelection;
+
 
 /**
  * The Class EQLTextSelection.
@@ -24,7 +24,7 @@ import org.eclipse.jface.text.ITextSelection;
  * @author The eFaps Team
  */
 public class EQLTextSelection
-    implements ITextSelection
+
 {
 
     /** The offset. */
@@ -46,39 +46,4 @@ public class EQLTextSelection
         this.offset = _offset;
     }
 
-    @Override
-    public boolean isEmpty()
-    {
-        return this.txt.isEmpty();
-    }
-
-    @Override
-    public int getOffset()
-    {
-        return this.offset;
-    }
-
-    @Override
-    public int getLength()
-    {
-        return this.txt.length();
-    }
-
-    @Override
-    public int getStartLine()
-    {
-        return 0;
-    }
-
-    @Override
-    public int getEndLine()
-    {
-        return 0;
-    }
-
-    @Override
-    public String getText()
-    {
-        return this.txt;
-    }
 }

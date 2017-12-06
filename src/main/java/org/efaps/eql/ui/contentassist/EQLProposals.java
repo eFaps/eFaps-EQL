@@ -16,32 +16,19 @@
  */
 package org.efaps.eql.ui.contentassist;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.jface.text.contentassist.ICompletionProposal;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.contentassist.CompletionProposalComputer;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ITemplateAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
-import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
-import org.eclipse.xtext.ui.editor.contentassist.antlr.ParserBasedContentAssistContextFactory;
-import org.eclipse.xtext.ui.editor.contentassist.antlr.ParserBasedContentAssistContextFactory.StatefulFactory;
-import org.eclipse.xtext.util.StringInputStream;
-import org.efaps.eql.EQLStandaloneSetup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.inject.Provider;
 
 /**
  * The Class EQLProposals.
  *
  * @author The eFaps Team
  */
+@Deprecated
 public final class EQLProposals
 {
 
@@ -87,52 +74,6 @@ public final class EQLProposals
     @SuppressWarnings("checkstyle:illegalcatch")
     public static List<String> getProposalList(final String _text)
     {
-        final List<String> ret = new ArrayList<>();
-        try {
-
-            final EQLProposalProvider provider = new EQLProposalProvider();
-            EQLStandaloneSetup.doSetup(provider);
-
-            final XtextContentAssistProcessor prov = new XtextContentAssistProcessor();
-            EQLStandaloneSetup.doSetup(prov);
-
-            final ParserBasedContentAssistContextFactory conte = new ParserBasedContentAssistContextFactory();
-            final EQLFactory ac = new EQLFactory();
-            EQLStandaloneSetup.doSetup(ac);
-            conte.setStatefulFactoryProvider(new Provider<StatefulFactory>()
-            {
-
-                @Override
-                public StatefulFactory get()
-                {
-                    return ac;
-                }
-            });
-            prov.setContextFactory(conte);
-
-            final XtextResource resource = new XtextResource();
-            EQLStandaloneSetup.doSetup(resource);
-
-            resource.load(new StringInputStream(_text), null);
-
-            prov.setTemplateProposalProvider(new ITemplateProposalProvider()
-            {
-                @Override
-                public void createTemplates(final ContentAssistContext _context,
-                                            final ITemplateAcceptor _acceptor)
-                {
-                }
-            });
-
-            final CompletionProposalComputer comp = new CompletionProposalComputer(prov, null, _text.length());
-            final ICompletionProposal[] prep = comp.exec(resource);
-            for (int i = 0; i < prep.length; i++) {
-                ret.add(prep[i].getDisplayString());
-            }
-        } catch (final Exception e) {
-            LOG.error("Catched error", e);
-        }
-        return ret;
+        return null;
     }
-
 }
