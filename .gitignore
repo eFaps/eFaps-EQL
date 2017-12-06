@@ -8,4 +8,4 @@
 /test-output/
 /plugin.xml_gen
 /.checkstyle
-/xtend-gen/
+/.antlr-generator-3.2.0-patch.jar
