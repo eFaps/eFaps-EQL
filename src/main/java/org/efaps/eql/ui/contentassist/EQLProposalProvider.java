@@ -3,11 +3,6 @@
  */
 package org.efaps.eql.ui.contentassist;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,116 +11,10 @@ import org.slf4j.LoggerFactory;
  * https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-
  * assist on how to customize the content assistant.
  */
+@Deprecated
 public class EQLProposalProvider
-    extends org.efaps.eql.ui.contentassist.AbstractEQLProposalProvider
 {
 
     /** The log. */
     private static Logger LOG = LoggerFactory.getLogger(EQLProposalProvider.class);
-
-    @Override
-    public void complete_OID(final EObject _model,
-                             final RuleCall _ruleCall,
-                             final ContentAssistContext _context,
-                             final ICompletionProposalAcceptor _acceptor)
-    {
-        final ConfigurableCompletionProposal proposal = doCreateProposal("111.222", null, null, 400, _context);
-        _acceptor.accept(proposal);
-    }
-
-    @Override
-    public void complete_ATTRIBUTE(final EObject _model,
-                                   final RuleCall _ruleCall,
-                                   final ContentAssistContext _context,
-                                   final ICompletionProposalAcceptor _acceptor)
-    {
-        final ConfigurableCompletionProposal proposal = doCreateProposal("ATTRIBUTE", null, null, 400, _context);
-        _acceptor.accept(proposal);
-    }
-
-    @Override
-    public void complete_CIPrintPart(final EObject _model,
-                                     final RuleCall _ruleCall,
-                                     final ContentAssistContext _context,
-                                     final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_CIPrintPart");
-    }
-
-    @Override
-    public void complete_PrintPart(final EObject _model,
-                                   final RuleCall _ruleCall,
-                                   final ContentAssistContext _context,
-                                   final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_PrintPart");
-    }
-
-    @Override
-    public void complete_QueryPart(final EObject _model,
-                                   final RuleCall _ruleCall,
-                                   final ContentAssistContext _context,
-                                   final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_QueryPart");
-    }
-
-    @Override
-    public void complete_UUID(final EObject _model,
-                              final RuleCall _ruleCall,
-                              final ContentAssistContext _context,
-                              final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_UUID");
-    }
-
-    @Override
-    public void complete_DeletePart(final EObject _model,
-                                    final RuleCall _ruleCall,
-                                    final ContentAssistContext _context,
-                                    final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_DeletePart");
-    }
-
-    @Override
-    public void complete_ObjQueryPart(final EObject _model,
-                                      final RuleCall _ruleCall,
-                                      final ContentAssistContext _context,
-                                      final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_ObjQueryPart");
-    }
-
-    @Override
-    public void complete_InsertPart(final EObject _model,
-                                    final RuleCall _ruleCall,
-                                    final ContentAssistContext _context,
-                                    final ICompletionProposalAcceptor _acceptor)
-    {
-        LOG.error("complete_InsertPart");
-    }
-
-    @Override
-    public void complete_TYPE(final EObject _model,
-                              final RuleCall _ruleCall,
-                              final ContentAssistContext _context,
-                              final ICompletionProposalAcceptor _acceptor)
-    {
-        final String prefix = _context.getPrefix();
-        if (prefix.isEmpty()) {
-            final ConfigurableCompletionProposal proposal = doCreateProposal("CITYPE", null, null, 400, _context);
-            _acceptor.accept(proposal);
-        } else {
-            for (final ICINameProvider provider : EQLProposals.getCINameProviders()) {
-                for (final String type : provider.getTypeNames()) {
-                    if (type.startsWith(prefix)) {
-                        final ConfigurableCompletionProposal proposal = doCreateProposal(type, null, null, 400,
-                                        _context);
-                        _acceptor.accept(proposal);
-                    }
-                }
-            }
-        }
-    }
 }

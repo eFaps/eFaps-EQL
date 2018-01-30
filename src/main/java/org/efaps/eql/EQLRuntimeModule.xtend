@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2015 The eFaps Team
+ * Copyright 2003 - 2017 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,36 +14,11 @@
  * limitations under the License.
  *
  */
-package org.efaps.eql.ui.contentassist;
-
+package org.efaps.eql
 
 
 /**
- * The Class EQLTextSelection.
- *
- * @author The eFaps Team
+ * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-public class EQLTextSelection
-
-{
-
-    /** The offset. */
-    private final int offset;
-
-    /** The txt. */
-    private final String txt;
-
-    /**
-     * Instantiates a new EQL text selection.
-     *
-     * @param _txt the txt
-     * @param _offset the offset
-     */
-    public EQLTextSelection(final String _txt,
-                            final int _offset)
-    {
-        this.txt = _txt;
-        this.offset = _offset;
-    }
-
+class EQLRuntimeModule extends AbstractEQLRuntimeModule {
 }

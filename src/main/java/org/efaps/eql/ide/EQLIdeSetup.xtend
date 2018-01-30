@@ -1,5 +1,5 @@
 /*
- * Copyright 2003 - 2015 The eFaps Team
+ * Copyright 2003 - 2017 The eFaps Team
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,36 +14,20 @@
  * limitations under the License.
  *
  */
-package org.efaps.eql.ui.contentassist;
+package org.efaps.eql.ide
 
-
+import com.google.inject.Guice
+import org.eclipse.xtext.util.Modules2
+import org.efaps.eql.EQLRuntimeModule
+import org.efaps.eql.EQLStandaloneSetup
 
 /**
- * The Class EQLTextSelection.
- *
- * @author The eFaps Team
+ * Initialization support for running Xtext languages as language servers.
  */
-public class EQLTextSelection
+class EQLIdeSetup extends EQLStandaloneSetup {
 
-{
-
-    /** The offset. */
-    private final int offset;
-
-    /** The txt. */
-    private final String txt;
-
-    /**
-     * Instantiates a new EQL text selection.
-     *
-     * @param _txt the txt
-     * @param _offset the offset
-     */
-    public EQLTextSelection(final String _txt,
-                            final int _offset)
-    {
-        this.txt = _txt;
-        this.offset = _offset;
+    override createInjector() {
+        Guice.createInjector(Modules2.mixin(new EQLRuntimeModule, new EQLIdeModule))
     }
 
 }

@@ -17,6 +17,8 @@
 
 package org.efaps.eql;
 
+import com.google.inject.Inject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -65,8 +67,6 @@ import org.efaps.eql.stmt.impl.NonOpUpdate;
 import org.efaps.eql.stmt.parts.INestedQueryStmtPart;
 import org.efaps.eql.stmt.parts.IQueryPart;
 import org.efaps.eql.validation.EQLJavaValidator;
-
-import com.google.inject.Inject;
 /**
  * TODO comment!
  *
@@ -253,15 +253,7 @@ public class EQLInvoker
                     ret = ciPrint;
                 }
             } else {
-                ret = new IEQLStmt()
-                {
-
-                    @Override
-                    public List<Diagnostic> getDiagnostics()
-                    {
-                        return diagnostics;
-                    }
-                };
+                ret = () -> diagnostics;
             }
         }
         return ret;
@@ -408,12 +400,12 @@ public class EQLInvoker
             final BasicDiagnostic diagnosticList = new BasicDiagnostic();
             final Map<Object, Object> context = new HashMap<>();
             context.put(AbstractInjectableValidator.CURRENT_LANGUAGE_NAME, "org.efaps.eql.EQL");
-            getValidator().validate(_stmt, diagnosticList, context);
+            //getValidator().validate(_stmt, diagnosticList, context);
             final TreeIterator<EObject> iterator = _stmt.eAllContents();
             while (iterator.hasNext()) {
                 final EObject nextObj = iterator.next();
                 if (nextObj != null) {
-                    getValidator().validate(nextObj, diagnosticList, context);
+              //      getValidator().validate(nextObj, diagnosticList, context);
                 }
             }
             ret = diagnosticList.getChildren();

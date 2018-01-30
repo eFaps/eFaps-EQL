@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.Check;
 import org.efaps.eql.eQL.Comparison;
-import org.efaps.eql.eQL.EQLPackage;
 import org.efaps.eql.eQL.OneWhere;
 import org.efaps.eql.eQL.QueryPart;
 import org.slf4j.Logger;
@@ -43,7 +42,7 @@ import org.slf4j.LoggerFactory;
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 public class EQLJavaValidator
-    extends org.efaps.eql.validation.AbstractEQLJavaValidator
+
 {
 
     /**
@@ -67,8 +66,6 @@ public class EQLJavaValidator
     {
         if (Comparison.IN.equals(_oneWhere.getComparison()) && _oneWhere.getValues().isEmpty()
                         && _oneWhere.getNestedQueryPart() == null) {
-            error("In must not be empty", EQLPackage.Literals.ONE_WHERE__VALUES, "E001", _oneWhere.getAttribute(),
-                            _oneWhere.getSelect());
         }
     }
 
@@ -84,14 +81,13 @@ public class EQLJavaValidator
             if (getValidations().containsKey("EQLJavaValidator.type")) {
                 for (final IValidation validator : getValidations().get("EQLJavaValidator.type")) {
                     if (!validator.validate(type)) {
-                        error("EQLJavaValidator.type", EQLPackage.Literals.QUERY_PART__TYPES, "E001", type);
                     }
                 }
             }
         }
     }
 
-    @Override
+
     protected Diagnostic createDiagnostic(final Severity _severity,
                                           final String _message,
                                           final EObject _object,
@@ -103,7 +99,7 @@ public class EQLJavaValidator
         return createDiagnostic(_severity, _message, _object, (EStructuralFeature) null, 0, _code, _issueData);
     }
 
-    @Override
+
     protected Diagnostic createDiagnostic(final Severity _severity,
                                           final String _message,
                                           final EObject _object,
@@ -168,7 +164,7 @@ public class EQLJavaValidator
         if (this.validations.containsKey(_key)) {
             validates = this.validations.get(_key);
         } else {
-            validates = new ArrayList<IValidation>();
+            validates = new ArrayList<>();
             this.validations.put(_key, validates);
         }
         validates.add(_validate);
