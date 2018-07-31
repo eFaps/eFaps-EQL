@@ -1,6 +1,6 @@
 properties([
   [$class: 'jenkins.model.BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '25']],
-  pipelineTriggers([[$class:"SCMTrigger", scmpoll_spec:"H/30 * * * *"]]),
+  pipelineTriggers([[$class:"SCMTrigger", scmpoll_spec:"H/30 * * * *"], snapshotDependencies()]),
 ])
 
 pipeline {
@@ -33,7 +33,7 @@ pipeline {
       steps {
         withMaven(maven: 'M3.5', mavenSettingsConfig: 'fb57b2b9-c2e4-4e05-955e-8688bc067515', mavenLocalRepo: "$WORKSPACE/../../.m2/${env.BRANCH_NAME}",
             options: [openTasksPublisher(disabled: true)]) {
-          sh 'mvn deploy -DskipTests'
+          sh 'mvn deploy'
         }
       }
     }
