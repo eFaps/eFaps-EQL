@@ -91,14 +91,14 @@
     </distributionManagement>
      <properties>
         <tycho-version>1.0.0</tycho-version>
-        <emf-version>2.12.0</emf-version>
-        <emf-common-version>2.12.0</emf-common-version>
-        <emf-codegen-version>2.11.0</emf-codegen-version>
-        <xtend-version>2.15.0</xtend-version>
-        <xtext-version>2.15.0</xtext-version>
-        <ecore-xtext-version>1.2.0</ecore-xtext-version>
-        <ecore-xcore-version>1.3.1</ecore-xcore-version>
-        <ecore-xcore-lib-version>1.1.100</ecore-xcore-lib-version>
+        <emf-version>2.19.0</emf-version>
+        <emf-common-version>2.16.0</emf-common-version>
+        <emf-codegen-version>2.19.0</emf-codegen-version>
+        <xtend-version>2.19.0</xtend-version>
+        <xtext-version>2.19.0</xtext-version>
+        <ecore-xtext-version>1.4.0</ecore-xtext-version>
+        <ecore-xcore-version>1.10.0</ecore-xcore-version>
+        <ecore-xcore-lib-version>1.4.0</ecore-xcore-lib-version>
     </properties>
 
     <build>
@@ -127,33 +127,6 @@
                     <includePluginDependencies>true</includePluginDependencies>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.eclipse.emf</groupId>
-                        <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-                        <version>2.9.1.201705291010</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.common.types</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.xbase</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.xtext</groupId>
-                        <artifactId>org.eclipse.xtext.ecore</artifactId>
-                        <version>${xtext-version}</version>
-                    </dependency>
-               </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.xtext</groupId>
@@ -200,9 +173,9 @@
                         <version>3.5.101</version>
                     </dependency>
                     <dependency>
-                        <groupId>org.eclipse.core</groupId>
-                        <artifactId>org.eclipse.core.resources</artifactId>
-                        <version>3.7.100</version>
+                        <groupId>org.eclipse.platform</groupId>
+                        <artifactId>org.eclipse.core.runtime</artifactId>
+                        <version>3.15.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.xtext</groupId>
@@ -227,7 +200,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-                        <version>${emf-version}</version>
+                        <version>${emf-common-version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -237,12 +210,23 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
-                        <version>${emf-common-version}</version>
+                        <version>${emf-codegen-version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
                         <version>${ecore-xcore-version}</version>
+                        <!-- the use of a range dependency does break the build -->
+                        <exclusions>
+                            <exclusion>
+                                <groupId>log4j</groupId>
+                                <artifactId>log4j</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.antlr</groupId>
+                                <artifactId>antlr-runtime</artifactId>
+                            </exclusion>
+                        </exclusions>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -395,6 +379,17 @@
             <groupId>org.eclipse.emf</groupId>
             <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
             <version>${ecore-xcore-version}</version>
+            <!-- the use of a range dependency does break the build -->
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.emf</groupId>
@@ -430,6 +425,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+            <version>2.11.0</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
