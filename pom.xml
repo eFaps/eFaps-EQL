@@ -91,17 +91,9 @@
         </repository>
     </distributionManagement>
     <properties>
-        <tycho-version>1.0.0</tycho-version>
-        <emf-version>2.20.0</emf-version>
-        <emf-common-version>2.17.0</emf-common-version>
-        <emf-codegen-version>2.20.0</emf-codegen-version>
         <xtend-version>2.20.0</xtend-version>
-        <xtext-version>2.20.0</xtext-version>
-        <ecore-xtext-version>1.4.0</ecore-xtext-version>
-        <ecore-xcore-version>1.12.0</ecore-xcore-version>
-        <ecore-xcore-lib-version>1.4.0</ecore-xcore-lib-version>
+        <xtext-version>2.21.0</xtext-version>
     </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -133,7 +125,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-                        <version>2.11.1</version>
+                        <version>2.11.2</version>
                     </dependency>
                     <!-- Xtext version to use -->
                     <dependency>
@@ -156,12 +148,12 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore</artifactId>
-                        <version>2.20.0</version>
+                        <version>2.21.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
-                        <version>2.20.0</version>
+                        <version>2.21.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -177,7 +169,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
-                        <version>1.12.0</version>
+                        <version>1.13.0</version>
                         <exclusions>
                             <exclusion>
                                 <groupId>*</groupId>
@@ -251,7 +243,7 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore.xcore</artifactId>
-                        <version>1.12.0</version>
+                        <version>1.13.0</version>
                         <exclusions>
                             <exclusion>
                                 <groupId>*</groupId>
@@ -262,17 +254,17 @@
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.ecore</artifactId>
-                        <version>2.20.0</version>
+                        <version>2.21.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.codegen.ecore</artifactId>
-                        <version>2.20.0</version>
+                        <version>2.21.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
                         <artifactId>org.eclipse.emf.common</artifactId>
-                        <version>2.17.0</version>
+                        <version>2.18.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.eclipse.emf</groupId>
@@ -322,7 +314,7 @@
                     <dependency>
                         <groupId>org.eclipse.platform</groupId>
                         <artifactId>org.eclipse.core.runtime</artifactId>
-                        <version>3.16.0</version>
+                        <version>3.17.0</version>
                         <exclusions>
                             <exclusion>
                                 <groupId>*</groupId>
