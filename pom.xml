@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.efaps</groupId>
         <artifactId>efaps-parent</artifactId>
-        <version>11.0.0-SNAPSHOT</version>
+        <version>17.0.0-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
     <artifactId>efaps-eql</artifactId>
@@ -204,8 +204,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <compilerSourceLevel>11</compilerSourceLevel>
-                    <compilerTargetLevel>11</compilerTargetLevel>
+                    <compilerSourceLevel>17</compilerSourceLevel>
+                    <compilerTargetLevel>17</compilerTargetLevel>
                     <encoding>UTF-8</encoding>
                     <languages>
                         <language>
@@ -303,7 +303,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <javaSourceVersion>11</javaSourceVersion>
+                    <javaSourceVersion>17</javaSourceVersion>
                     <outputDirectory>${basedir}/src/main/xtend-gen</outputDirectory>
                     <testOutputDirectory>${basedir}/src/test/xtend-gen</testOutputDirectory>
                     <generatedAnnotationComment>true</generatedAnnotationComment>
